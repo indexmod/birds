@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коллаж изображений</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            width: 90vw;
+            max-width: 1200px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            const repoOwner = "indexmod";  // замените на ваш GitHub username
+            const repoName = "birds";  // название репозитория
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/`);
+                const files = await response.json();
+
+                const gallery = document.getElementById("gallery");
+
+                files.forEach(file => {
+                    if (file.name.match(/\.(jpe?g|png|gif|webp)$/i)) {
+                        const imageElement = document.createElement("img");
+                        imageElement.src = file.download_url;
+                        imageElement.alt = "Коллаж изображений";
+                        gallery.appendChild(imageElement);
+                    }
+                });
+            } catch (error) {
+                console.error("Ошибка загрузки изображений: ", error);
+            }
+        });
+    </script>
+</body>
+</html>
