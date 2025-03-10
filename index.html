@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birds</title>
     <style>
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..800&display=swap');
 
         body {
             margin: 0;
@@ -19,62 +19,45 @@
             font-family: "EB Garamond", serif;
             font-size: 200px;
             margin: 20px 0;
-            text-align: left;
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 0;
-            padding: 0;
             width: 100vw;
             max-width: 1200px;
         }
         .gallery img {
             width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 0;
             object-fit: cover;
-            transition: transform 0.3s ease;
-            loading: lazy;
+            transition: transform 0.3s;
         }
         .gallery img:hover {
             transform: scale(1.05);
         }
-
-
     </style>
 </head>
 <body>
 
     <h1>Birds</h1>
-
     <div class="gallery" id="gallery"></div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", async function() {
-            const repoOwner = "indexmod";
-            const repoName = "birds";
-
+        document.addEventListener("DOMContentLoaded", async () => {
+            const repo = "indexmod/birds";
             try {
-                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/`, {
-                    cache: "force-cache"
-                });
+                const response = await fetch(`https://api.github.com/repos/${repo}/contents/`);
                 const files = await response.json();
-
                 const gallery = document.getElementById("gallery");
 
-                files.forEach(file => {
-                    if (file.name.match(/\.(jpe?g|png|gif|webp)$/i)) {
-                        const imageElement = document.createElement("img");
-                        imageElement.src = file.download_url;
-                        imageElement.alt = "img";
-                        imageElement.loading = "lazy";
-                        gallery.appendChild(imageElement);
-                    }
-                });
+                files.filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f.name))
+                     .forEach(f => {
+                         const img = document.createElement("img");
+                         img.src = f.download_url;
+                         img.loading = "lazy";
+                         gallery.appendChild(img);
+                     });
             } catch (error) {
-                console.error("Ошибка загрузки изображений: ", error);
+                console.error("Ошибка загрузки изображений:", error);
             }
         });
     </script>
