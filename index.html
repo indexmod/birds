@@ -68,7 +68,7 @@
                     if (file.name.match(/\.(jpe?g|png|gif|webp)$/i)) {
                         const imageElement = document.createElement("img");
                         imageElement.src = file.download_url;
-                        imageElement.alt = "Коллаж изображений";
+                        imageElement.alt = "img";
                         imageElement.loading = "lazy";
                         gallery.appendChild(imageElement);
                     }
