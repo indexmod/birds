@@ -9,14 +9,19 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 100px;
+            margin: 20px 0;
+            text-align: center;
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+            gap: 0px;
             padding: 20px;
             width: 90vw;
             max-width: 1200px;
@@ -24,7 +29,7 @@
         .gallery img {
             width: 100%;
             height: auto;
-            border-radius: 10px;
+            border-radius: 0px;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
@@ -34,6 +39,9 @@
     </style>
 </head>
 <body>
+
+    <h1>Birds Georgia</h1>
+
     <div class="gallery" id="gallery"></div>
 
     <script>
