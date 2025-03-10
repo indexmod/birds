@@ -25,14 +25,26 @@
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             width: 100vw;
             max-width: 1200px;
+            position: relative;
+        }
+        .gallery-item {
+            position: relative;
         }
         .gallery img {
             width: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            display: block;
         }
-        .gallery img:hover {
-            transform: scale(1.05);
+        .gallery-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 50px;
+            color: orange;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 5px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -50,11 +62,21 @@
                 const gallery = document.getElementById("gallery");
 
                 files.filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f.name))
-                     .forEach(f => {
+                     .forEach((f, index) => {
+                         const item = document.createElement("div");
+                         item.className = "gallery-item";
+
                          const img = document.createElement("img");
                          img.src = f.download_url;
                          img.loading = "lazy";
-                         gallery.appendChild(img);
+
+                         const number = document.createElement("div");
+                         number.className = "gallery-number";
+                         number.textContent = index + 1;
+
+                         item.appendChild(img);
+                         item.appendChild(number);
+                         gallery.appendChild(item);
                      });
             } catch (error) {
                 console.error("Ошибка загрузки изображений:", error);
