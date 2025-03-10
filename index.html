@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Коллаж изображений</title>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+
         body {
             margin: 0;
             padding: 0;
@@ -14,43 +16,50 @@
             background-color: #f0f0f0;
         }
         h1 {
-            font-size: 100px;
+            font-family: "EB Garamond", serif;
+            font-size: 200px;
             margin: 20px 0;
-            text-align: center;
+            text-align: left;
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 0px;
-            padding: 20px;
-            width: 90vw;
+            gap: 0;
+            padding: 0;
+            width: 100vw;
             max-width: 1200px;
         }
         .gallery img {
             width: 100%;
             height: auto;
-            border-radius: 0px;
+            display: block;
+            border-radius: 0;
             object-fit: cover;
             transition: transform 0.3s ease;
+            loading: lazy;
         }
         .gallery img:hover {
             transform: scale(1.05);
         }
+
+
     </style>
 </head>
 <body>
 
-    <h1>Birds Georgia</h1>
+    <h1>Birds Mag</h1>
 
     <div class="gallery" id="gallery"></div>
 
     <script>
         document.addEventListener("DOMContentLoaded", async function() {
-            const repoOwner = "indexmod";  // замените на ваш GitHub username
-            const repoName = "birds";  // название репозитория
+            const repoOwner = "indexmod";
+            const repoName = "birds";
 
             try {
-                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/`);
+                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/`, {
+                    cache: "force-cache"
+                });
                 const files = await response.json();
 
                 const gallery = document.getElementById("gallery");
@@ -60,6 +69,7 @@
                         const imageElement = document.createElement("img");
                         imageElement.src = file.download_url;
                         imageElement.alt = "Коллаж изображений";
+                        imageElement.loading = "lazy";
                         gallery.appendChild(imageElement);
                     }
                 });
