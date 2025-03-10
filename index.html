@@ -25,10 +25,10 @@
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            width: 100vw;
+            width: calc(100vw - 40px);
             max-width: 1200px;
             position: relative;
-            margin-left: 20px;
+            margin: 0 20px;
         }
         .gallery-item {
             position: relative;
@@ -44,10 +44,10 @@
             left: 10px;
             font-family: "EB Garamond", serif;
             font-size: 100px;
-            color: orange;
+            color: black;
             background: transparent;
-            padding: 0px;
-            border-radius: 0px;
+            padding: 0;
+            border-radius: 0;
         }
     </style>
 </head>
