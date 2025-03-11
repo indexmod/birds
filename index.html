@@ -40,15 +40,15 @@
         }
         .gallery-number {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 5px;
+            left: 5px;
             font-family: "EB Garamond", serif;
-            font-size: 20px;
+            font-size: 14px;
             color: white;
             background: black;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 24px;
+            height: 24px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -68,23 +68,25 @@
                 const files = await response.json();
                 const gallery = document.getElementById("gallery");
 
-                files.filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f.name))
-                     .forEach((f, index) => {
-                         const item = document.createElement("div");
-                         item.className = "gallery-item";
+                const images = files.filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f.name));
+                images.sort(() => Math.random() - 0.5); // Рандомизация порядка
 
-                         const img = document.createElement("img");
-                         img.src = f.download_url;
-                         img.loading = "lazy";
+                images.forEach((f, index) => {
+                    const item = document.createElement("div");
+                    item.className = "gallery-item";
 
-                         const number = document.createElement("div");
-                         number.className = "gallery-number";
-                         number.textContent = index + 1;
+                    const img = document.createElement("img");
+                    img.src = f.download_url;
+                    img.loading = "lazy";
 
-                         item.appendChild(img);
-                         item.appendChild(number);
-                         gallery.appendChild(item);
-                     });
+                    const number = document.createElement("div");
+                    number.className = "gallery-number";
+                    number.textContent = images.length - index;
+
+                    item.appendChild(img);
+                    item.appendChild(number);
+                    gallery.appendChild(item);
+                });
             } catch (error) {
                 console.error("Ошибка загрузки изображений:", error);
             }
