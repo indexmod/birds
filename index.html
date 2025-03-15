@@ -3,98 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(100338471, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/100338471" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-<link rel="icon" type="image/png" sizes="310x310" href="bird.png">
-<meta property="og:image" content="bird.png">
-<meta name="twitter:image" content="bird.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="white">
-<meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
-<meta name="theme-color" content="transparent">
-<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <title>Birds</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Verdana:wght@400&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            font-family: "EB Garamond", serif;
-            font-size: 200px;
-            font-weight: lighter;
-            margin: 20px;
-            text-align: left;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            width: calc(100vw - 40px);
-            max-width: 1200px;
-            position: relative;
-            margin: 0 20px;
-        }
-        .gallery-item {
-            position: relative;
-        }
-        .gallery img {
-            width: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .gallery-number {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            font-family: "EB Garamond", serif;
-            font-size: 14px;
-            color: white;
-            background: black;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: transparent;
+        font-family: "Verdana", sans-serif;
+    }
+
+    h1 {
+        font-family: "EB Garamond", serif;
+        font-size: 200px;
+        font-weight: lighter;
+        margin-bottom: 5px;
+        text-align: left;
+        align-self: flex-start;
+        margin-left: 40px;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: calc(100vw - 80px);
+        padding: 5px;
+        background: transparent;
+        box-shadow: none;
+        text-align: left;
+        font-size: 20px;
+    }
+
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        width: calc(100vw - 80px);
+        max-width: 1200px;
+        gap: 10px;
+    }
+    .gallery-item {
+        position: relative;
+    }
+    .gallery img {
+        width: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .gallery-number {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-family: "EB Garamond", serif;
+        font-size: 14px;
+        color: white;
+        background: black;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 </head>
 <body>
 
     <h1>Birds</h1>
+    <div class="container">
+        <p>
+            This one-page-website features a randomized gallery of bird images and illustrations sourced from a GitHub repository. If you are familiar with GitHub, you are invited to contribute by uploading your own illustrations via
+            <a href="https://github.com/indexmod/birds" style="display: inline-block; background: #ddd; padding: 2px 6px; border-radius: 10px; text-decoration: none; color: black;">Add</a>.
+            If you would like to show your support, you are welcome to
+            <a href="https://buymeacoffee.com/indexmod" style="display: inline-block; background: #f5e79e; padding: 2px 6px; border-radius: 10px; text-decoration: none; color: black;">Buy me a coffee</a>
+            or explore my
+            <a href="https://face.indexmod.xyz/" style="display: inline-block; background: #ddd; padding: 2px 6px; border-radius: 10px; text-decoration: none; color: black;">other work</a>.
+            Thank you
+        </p>
+    </div>
+
+
+
+
     <div class="gallery" id="gallery"></div>
 
     <script>
@@ -106,7 +100,7 @@
                 const gallery = document.getElementById("gallery");
 
                 const images = files.filter(f => /\.(jpe?g|png|gif|webp)$/i.test(f.name));
-                images.sort(() => Math.random() - 0.5); // Рандомизация порядка
+                images.sort(() => Math.random() - 0.5);
 
                 images.forEach((f, index) => {
                     const item = document.createElement("div");
