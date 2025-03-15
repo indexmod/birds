@@ -4,79 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birds</title>
+    <meta name="description" content="The website displays a randomized gallery of bird images and other illustrations sourced from a GitHub repository.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Birds">
+    <meta property="og:description" content="The website displays a randomized gallery of bird images and other illustrations sourced from a GitHub repository.">
+    <meta property="og:image" content="bird.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Birds">
+    <meta name="twitter:description" content="The website displays a randomized gallery of bird images and other illustrations sourced from a GitHub repository.">
+    <meta name="twitter:image" content="bird.png">
+
+    <!-- WhatsApp & Telegram -->
+    <meta name="telegram:image" content="bird.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="310x310" href="bird.png">
+
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..800&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Verdana:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Verdana:wght@400&display=swap');
 
-    body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: transparent;
-        font-family: "Verdana", sans-serif;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: transparent;
+            font-family: "Verdana", sans-serif;
+        }
 
-    h1 {
-        font-family: "EB Garamond", serif;
-        font-size: 200px;
-        font-weight: lighter;
-        margin-bottom: 5px;
-        text-align: left;
-        align-self: flex-start;
-        margin-left: 40px;
-    }
+        h1 {
+            font-family: "EB Garamond", serif;
+            font-size: 200px;
+            font-weight: lighter;
+            margin-bottom: 5px;
+            text-align: left;
+            align-self: flex-start;
+            margin-left: 40px;
+        }
 
-    .container {
-        max-width: 1200px;
-        width: calc(100vw - 80px);
-        padding: 5px;
-        background: transparent;
-        box-shadow: none;
-        text-align: left;
-        font-size: 20px;
-    }
+        .container {
+            max-width: 1200px;
+            width: calc(100vw - 80px);
+            padding: 5px;
+            background: transparent;
+            box-shadow: none;
+            text-align: left;
+            font-size: 20px;
+        }
 
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: calc(100vw - 80px);
+            max-width: 1200px;
+            gap: 10px;
+        }
 
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        width: calc(100vw - 80px);
-        max-width: 1200px;
-        gap: 10px;
-    }
-    .gallery-item {
-        position: relative;
-    }
-    .gallery img {
-        width: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    .gallery-number {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        font-family: "EB Garamond", serif;
-        font-size: 14px;
-        color: white;
-        background: black;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
+        .gallery-item {
+            position: relative;
+        }
+
+        .gallery img {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-family: "EB Garamond", serif;
+            font-size: 14px;
+            color: white;
+            background: black;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
     <h1>Birds</h1>
     <div class="container">
         <p>
-            This one-page-website features a randomized gallery of bird images and illustrations sourced from a GitHub repository. If you are familiar with GitHub, you are invited to contribute by uploading your own illustrations via
+            This one-page website features a randomized gallery of bird images and illustrations sourced from a GitHub repository. If you are familiar with GitHub, you are invited to contribute by uploading your own illustrations via
             <a href="https://github.com/indexmod/birds" style="display: inline-block; background: #ddd; padding: 2px 6px; border-radius: 10px; text-decoration: none; color: black;">Add</a>.
             If you would like to show your support, you are welcome to
             <a href="https://buymeacoffee.com/indexmod" style="display: inline-block; background: #f5e79e; padding: 2px 6px; border-radius: 10px; text-decoration: none; color: black;">Buy me a coffee</a>
@@ -85,9 +108,6 @@
             Thank you
         </p>
     </div>
-
-
-
 
     <div class="gallery" id="gallery"></div>
 
